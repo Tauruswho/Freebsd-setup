@@ -1,0 +1,43 @@
+#
+# Host Database
+#
+# This file should contain the addresses and aliases for local hosts that
+# share this file.  Replace 'my.domain' below with the domainname of your
+# machine.
+#
+# In the presence of the domain name service or NIS, this file may
+# not be consulted at all; see /etc/nsswitch.conf for the resolution order.
+#
+#
+::1			localhost localhost.who who
+127.0.0.1		localhost localhost.who who
+#
+# Imaginary network.
+#10.0.0.2		myname.my.domain myname
+#10.0.0.3		myfriend.my.domain myfriend
+#
+# According to RFC 1918, you can use the following IP blocks for
+# private internets:
+#
+#	10.0.0.0	-   10.255.255.255	(10/8 prefix)
+#	172.16.0.0	-   172.31.255.255	(172.16/12 prefix)
+#	192.168.0.0	-   192.168.255.255	(192.168/16 prefix)
+#
+# In case you want to make addresses available on the Internet, you need
+# real official assigned numbers.  Do not try to invent your own network
+# numbers but instead get one from your network provider (if any) or
+# from your regional registry (ARIN, APNIC, LACNIC, RIPE NCC, or AfriNIC.)
+#
+192.168.1.21 who  who.local
+192.168.1.22 who  who.local
+192.168.1.23 rocky  rocky.local
+192.168.1.24 rocky  rocky.local
+192.168.1.25 nuc7   nuc7.local
+192.168.1.26 nuc7   nuc7.local
+192.168.1.27 hp     hp.local
+192.168.1.28 hp     hp.local
+192.168.1.29 nuc6   nuc6.local
+192.168.1.30 nuc6   nuc6.local
+192.168.1.31 raspi  raspi.local
+192.168.1.32 raspi  raspi.local
+
