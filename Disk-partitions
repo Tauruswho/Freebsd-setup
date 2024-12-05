@@ -1,0 +1,12 @@
+# Use gpart
+
+gpart destroy -F /dev/ada0
+gpart create -s gpt /dev/ada0
+gpart add -t efi -s 260M /dev/ada0
+gpart add -t freebsd-zfs -s 932G /dev/ada0
+gpart add -t freebsd-swap -s 2048M /dev/ada0
+
+gpart delete -i 3 /dev/ada0
+gpart modify -l swap-black -i3 /dev/ada0
+
+

@@ -3,3 +3,12 @@
 sudo zpool create  -o ashift=12 -o autotrim=on -O acltype=posixacl -O compression=zstd  -O dnodesize=auto -O relatime=on -O atime=off -O xattr=sa -O recordsize=1M tank4  /dev/nda2p1
 
 # set recordsize=1M for home pool..
+
+zfs create tank4/home
+zfs create tank4/home/mark  ## etc etc...
+
+zpool set cachefile=/boot/zfs/zpool.cache tank4
+
+ln -s /boot/zfs /etc/zfs  ## this links zpool cache so that zdb works...
+
+
