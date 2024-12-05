@@ -1,0 +1,5 @@
+# zpool create example
+
+sudo zpool create  -o ashift=12 -o autotrim=on -O acltype=posixacl -O compression=zstd  -O dnodesize=auto -O relatime=on -O atime=off -O xattr=sa -O recordsize=1M tank4  /dev/nda2p1
+
+# set recordsize=1M for home pool..
