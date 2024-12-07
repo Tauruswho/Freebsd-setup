@@ -8,7 +8,6 @@ zfs create tank4/home
 zfs create tank4/home/mark  ## etc etc...
 
 zpool set cachefile=/boot/zfs/zpool.cache tank4
-
 ln -s /boot/zfs /etc/zfs  ## this links zpool cache so that zdb works...
 
 # zfs Send Recieve
@@ -18,7 +17,9 @@ zpool import -R /mnt tank2 ## so mountpoints don't get duplicated..
 sudo zfs send -Rv tank4/home@20241206  | sudo zfs recv -Fuv tank2/home ## new pool backup  (-u do not mount mountpoints or above -R)
 sudo zfs send -Riv tank4/home@20241206  | sudo zfs recv tank2/home ## old pool update incremental (i)
 
+zfs set com.sun:auto-snapshot=true tank4 ## maybe needed...
 
+ln -s /usr/local/etc/sanoid /etc/sanoid ## gets sanoid config into correct place to work...
 
 
 

@@ -2,11 +2,11 @@
 
 gpart destroy -F /dev/ada0
 gpart create -s gpt /dev/ada0
-gpart add -t efi -s 260M /dev/ada0
-gpart add -t freebsd-zfs -s 932G /dev/ada0
-gpart add -t freebsd-swap -s 2048M /dev/ada0
+gpart add -t efi -s 260M /dev/ada0  
+gpart add -t freebsd-zfs -s 928G /dev/ada0  ## adjust as needed
+gpart add -t freebsd-swap -s 2048M /dev/ada0  ## adjust as needed
 
-gpart delete -i 3 /dev/ada0
-gpart modify -l swap-black -i3 /dev/ada0
+gpart delete -i 3 /dev/ada0  ## deletes part 3
+gpart modify -l swap-black -i3 /dev/ada0 ## add a disk label
 
 
