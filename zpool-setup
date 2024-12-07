@@ -21,5 +21,7 @@ zfs set com.sun:auto-snapshot=true tank4 ## maybe needed...
 
 ln -s /usr/local/etc/sanoid /etc/sanoid ## gets sanoid config into correct place to work...
 
+## rsync after inital pool backup..
+sudo rsync -av /home/ /mnt/home/
 
 
