@@ -1,4 +1,4 @@
 # packages to install on Freebsd
 pkg update
 pkg upgrade
-pkg install conky thunderbird glabels auacity audacious strawberry simple-scan shotwell libreoffice neofetch fastfetch cmatrix xsane gimp htop handbrake terminology kicad nvme-cli openhantek obs-studio sanoid mpv jellyfin amplayer firefox chromium fish webcamoid nano cups hplip gutenprint lightdm lightdm-gtk-greeter desktop-installer pwcview lightdm-gtk-greeting-settings octopkg dsbmc dsbmc-cli dsbmd sudo doas git fusefs-1k1
+pkg install conky thunderbird glabels auacity audacious strawberry simple-scan shotwell libreoffice neofetch fastfetch cmatrix xsane gimp htop handbrake terminology kicad nvme-cli openhantek obs-studio sanoid mpv jellyfin amplayer firefox chromium fish webcamoid nano cups hplip gutenprint lightdm lightdm-gtk-greeter desktop-installer pwcview lightdm-gtk-greeting-settings octopkg dsbmc dsbmc-cli dsbmd sudo doas git fusefs-1k1 wget
