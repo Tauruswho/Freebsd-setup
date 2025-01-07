@@ -4,6 +4,9 @@
 
 # Use gpart
 
+gpart show
+gpart show -l
+
 gpart destroy -F /dev/ada0
 gpart create -s gpt /dev/ada0
 gpart add -t efi -s 260M /dev/ada0  
