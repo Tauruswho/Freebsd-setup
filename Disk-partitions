@@ -1,3 +1,7 @@
+# ID disks
+
+ geom disk list
+
 # Use gpart
 
 gpart destroy -F /dev/ada0
