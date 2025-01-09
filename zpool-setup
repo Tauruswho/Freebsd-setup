@@ -4,27 +4,27 @@ sudo zpool create  -o ashift=12 -o autotrim=on -O acltype=posixacl -O compressio
 
 ## (/dev/gpt/label) is using labels , see gpart
 
-zfs create tank4/home
-zfs create tank4/home/mark  ## etc etc...
+sudo zfs create tank4/home
+sudo zfs create tank4/home/mark  ## etc etc...
 # set recordsize=1M for home pool..
-zfs set recordsize=1M tank4/home
+sudo zfs set recordsize=1M tank4/home
 
-zpool status
-zpool list
+sudo zpool status
+sudo zpool list
 
-zpool set cachefile=/boot/zfs/zpool.cache tank4
-ln -s /boot/zfs /etc/zfs  ## this links zpool cache so that zdb works...
+sudo zpool set cachefile=/boot/zfs/zpool.cache tank4
+sudo ln -s /boot/zfs /etc/zfs  ## this links zpool cache so that zdb works...
 
 # zfs Send Recieve
 
-zpool import -R /mnt tank2 ## so mountpoints don't get duplicated..
+sudo zpool import -R /mnt tank2 ## so mountpoints don't get duplicated..
 
 sudo zfs send -Rv tank4/home@20241206  | sudo zfs recv -Fuv tank2/home ## new pool backup  (-u do not mount mountpoints or above -R)
 sudo zfs send -Riv tank4/home@20241206  | sudo zfs recv tank2/home ## old pool update incremental (i)
 
-zfs set com.sun:auto-snapshot=true tank4 ## maybe needed...
+sudo zfs set com.sun:auto-snapshot=true tank4 ## maybe needed...
 
-ln -s /usr/local/etc/sanoid /etc/sanoid ## gets sanoid config into correct place to work...
+sudo ln -s /usr/local/etc/sanoid /etc/sanoid ## gets sanoid config into correct place to work...
 
 ## rsync after inital pool backup..
 sudo rsync -av /home/ /mnt/home/
@@ -34,5 +34,5 @@ sudo zpool set bootfs=tank6/ROOT/default tank6
 sudo zfs list -H -o name -t snapshot | sudo xargs -n1 zfs destroy  ## destroy all snapshots
 
 sudo efibootmgr	  -a   -c   -l	 /boot/efi/efi/freebsd/loader.efi   -L FreeBSD-14.2
-efibootmgr -v ## list boot entries
-efibootmgr	-B -b 0009 ## delete entry
+sudo efibootmgr -v ## list boot entries
+sudo efibootmgr	-B -b 0009 ## delete entry
