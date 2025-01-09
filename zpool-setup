@@ -28,4 +28,10 @@ ln -s /usr/local/etc/sanoid /etc/sanoid ## gets sanoid config into correct place
 ## rsync after inital pool backup..
 sudo rsync -av /home/ /mnt/home/
 
+## Useful things
+sudo zpool set bootfs=tank6/ROOT/default tank6
+sudo zfs list -H -o name -t snapshot | sudo xargs -n1 zfs destroy  ## destroy all snapshots
 
+sudo efibootmgr	  -a   -c   -l	 /boot/efi/efi/freebsd/loader.efi   -L FreeBSD-14.2
+efibootmgr -v ## list boot entries
+efibootmgr	-B -b 0009 ## delete entry
