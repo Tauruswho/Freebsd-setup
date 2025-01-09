@@ -2,6 +2,7 @@
 
 sudo zpool create  -o ashift=12 -o autotrim=on -O acltype=posixacl -O compression=lz4  -O dnodesize=auto -O relatime=on -O atime=off -O xattr=sa tank4  /dev/nda2p1
 
+## (/dev/gpt/label) is using labels , see gpart
 
 zfs create tank4/home
 zfs create tank4/home/mark  ## etc etc...
