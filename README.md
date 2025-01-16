@@ -6,4 +6,4 @@ Lost virtual consoles after upgrade to 14.2..
 
 Had same issue with amdgpu graphics card and i915kms graphics card.
 
-Do this as root user:--  "cd /usr/psorts/graphics/drm-61-kmod" and "make install" worked perfectly for me..
+Do this as root user:--  "cd /usr/ports/graphics/drm-61-kmod" and "make install" worked perfectly for me..
