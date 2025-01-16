@@ -1,6 +1,7 @@
-Some basics for Feebsd set up... work in progress. 
-Use desktop-installer for setting up desktops. 
-This is mostly a lot os commands that I can't remember so this page saves me an internet search.
+Some basics for Feebsd set up... work in progress.
+This is mostly a lot commands and examples that I can't remember so this page saves me an internet search.
+
+I use "desktop-installer" for setting up desktops for first install. 
 
 Lost virtual consoles after upgrade to 14.2..
 
