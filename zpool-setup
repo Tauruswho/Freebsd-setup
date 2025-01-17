@@ -14,6 +14,10 @@ sudo zfs set recordsize=1M tank4/home
 sudo zpool status
 sudo zpool list
 
+## rsync after inital pool setup or try zfs send recieve below..
+sudo rsync -av /home/ /mnt/home/
+
+## For root pool 
 sudo zpool set cachefile=/boot/zfs/zpool.cache tank4
 sudo ln -s /boot/zfs /etc/zfs  ## this links zpool cache so that zdb works...
 
