@@ -1,3 +1,5 @@
+## "The right commands, not necessarily in the right order" ##
+
 # zpool create example
 
 sudo zpool create  -o ashift=12 -o autotrim=on -O acltype=posixacl -O compression=lz4  -O dnodesize=auto -O relatime=on -O atime=off -O xattr=sa tank4  /dev/nda2p2
