@@ -38,6 +38,8 @@ sudo ln -s /usr/local/etc/sanoid /etc/sanoid ## gets sanoid config into correct 
 ## rsync after inital pool backup..
 sudo rsync -av /home/ /mnt/home/
 
+syncoid -r pool1 pool2 ## need to try this one
+
 ## Useful things
 sudo zpool set bootfs=tank6/ROOT/default tank6
 sudo zfs list -H -o name -t snapshot | sudo xargs -n1 zfs destroy  ## destroy all snapshots
