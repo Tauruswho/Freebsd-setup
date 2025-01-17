@@ -15,5 +15,9 @@ gpart add -t freebsd-swap -s 2048M /dev/ada0  ## adjust as needed
 
 gpart delete -i 3 /dev/ada0  ## deletes part 3
 gpart modify -l swap-black -i3 /dev/ada0 ## add a disk label
+gpart modify -l efiboot-1 -i1 /dev/ada0 ## add a disk label
+
+sudo newfs_msdos -F 32 -c 1 -L "efiboot-1" /dev/ada0p1  ## Format the efi boot partition with label
+
 
 
