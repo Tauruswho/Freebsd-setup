@@ -19,6 +19,8 @@ sudo zpool list
 sudo rsync -av /home/ /mnt/home/
 
 ## For root pool 
+sudo mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi
+sudo cp -av /boot/efi /mnt/boot/efi
 sudo zpool set cachefile=/boot/zfs/zpool.cache tank4
 sudo ln -s /boot/zfs /etc/zfs  ## this links zpool cache so that zdb works...
 
