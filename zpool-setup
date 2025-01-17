@@ -19,7 +19,7 @@ sudo ln -s /boot/zfs /etc/zfs  ## this links zpool cache so that zdb works...
 
 sudo zpool import -R /mnt tank2 ## so mountpoints don't get duplicated..
 
-sudo zfs send -Rv tank4/home@20241206  | sudo zfs recv -Fuv tank2/home ## new pool backup  (-u do not mount mountpoints or above -R)
+sudo zfs send -Rv tank4/home@20241206  | sudo zfs recv -Fuv tank2/home ## new pool backup  (-u do not mount mountpoints or above -R or both to be shure)
 sudo zfs send -Riv tank4/home@20241206  | sudo zfs recv tank2/home ## old pool update incremental (i)
 
 ## Destroy all zfs snapshots
