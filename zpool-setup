@@ -19,7 +19,7 @@ sudo zpool list
 sudo rsync -av /home/ /mnt/home/
 
 ## For root pool 
-sudo mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi ## add to fstab 
+sudo mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi ## add to fstab "/dev/gpt/efiboot-1  /boot/efi msdosfs rw 2 2"
 sudo cp -av /boot/efi /mnt/boot/efi
 sudo zpool set bootfs=tank6/ROOT/default tank6
 sudo zpool set cachefile=/boot/zfs/zpool.cache tank4
