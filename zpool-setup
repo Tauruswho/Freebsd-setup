@@ -42,8 +42,9 @@ sudo ln -s /usr/local/etc/sanoid /etc/sanoid ## gets sanoid config into correct 
 
 ## Useful things
 
-## mount the bootefi partition
+## mount the bootefi partition and copy whole system...
 sudo mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi
+sudo rsync -av --exclude "/mnt" / /mnt/
 
 sudo zfs list -H -o name -t snapshot | sudo xargs -n1 zfs destroy  ## destroy all snapshots
 
