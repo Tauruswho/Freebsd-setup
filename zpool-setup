@@ -24,7 +24,7 @@ sudo cp -av /boot/efi /mnt/boot/efi
 sudo zpool set bootfs=tank6/ROOT/default tank6
 sudo zpool set cachefile=/boot/zfs/zpool.cache tank4
 sudo ln -s /boot/zfs /etc/zfs  ## this links zpool cache so that zdb works...
-
+sudo rm /mnt/boot/zfs/*  ## if creating new bootable pool from another pool..
 # zfs Send Recieve
 
 sudo zpool import -R /mnt tank2 ## so mountpoints don't get duplicated..
