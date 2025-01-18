@@ -19,7 +19,7 @@ sudo zpool list
 sudo rsync -av /home/ /mnt/home/
 
 ## For root pool 
-sudo mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi
+sudo mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi ## add to fstab 
 sudo cp -av /boot/efi /mnt/boot/efi
 sudo zpool set bootfs=tank6/ROOT/default tank6
 sudo zpool set cachefile=/boot/zfs/zpool.cache tank4
@@ -43,7 +43,7 @@ sudo ln -s /usr/local/etc/sanoid /etc/sanoid ## gets sanoid config into correct 
 ## Useful things
 
 ## mount the bootefi partition and copy whole system...
-sudo mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi
+sudo mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi ## Add to fstab "/dev/gpt/efiboot-1  /boot/efi msdosfs rw 2 2"
 sudo rsync -av --exclude "/mnt" / /mnt/
 
 sudo zfs list -H -o name -t snapshot | sudo xargs -n1 zfs destroy  ## destroy all snapshots
