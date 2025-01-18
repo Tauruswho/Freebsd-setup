@@ -42,7 +42,7 @@ sudo ln -s /usr/local/etc/sanoid /etc/sanoid ## gets sanoid config into correct 
 
 ## Useful things
 
-## mount the bootefi partition and copy whole system...
+## mount the /boot/efi partition and copy whole system...
 sudo mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi ## Add to fstab "/dev/gpt/efiboot-1  /boot/efi msdosfs rw 2 2"
 sudo rsync -av --exclude "/mnt" / /mnt/
 
