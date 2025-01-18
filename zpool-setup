@@ -42,6 +42,9 @@ sudo ln -s /usr/local/etc/sanoid /etc/sanoid ## gets sanoid config into correct 
 
 ## Useful things
 
+## mount the bootefi partition
+sudo mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi
+
 sudo zfs list -H -o name -t snapshot | sudo xargs -n1 zfs destroy  ## destroy all snapshots
 
 sudo efibootmgr	  -a   -c   -l	 /boot/efi/efi/freebsd/loader.efi   -L FreeBSD-14.2
