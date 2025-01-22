@@ -51,3 +51,7 @@ sudo zfs list -H -o name -t snapshot | sudo xargs -n1 zfs destroy  ## destroy al
 sudo efibootmgr	  -a   -c   -l	 /boot/efi/efi/freebsd/loader.efi   -L FreeBSD-14.2
 sudo efibootmgr -v ## list boot entries
 sudo efibootmgr	-B -b 0009 ## delete entry
+
+## Copy whole disk to new disk
+sudo dd if=/dev/ada0 of=/dev/ada1 bs=1m status=progress
+
