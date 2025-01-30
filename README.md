@@ -8,3 +8,7 @@ Lost virtual consoles after upgrade to 14.2..
 Had same issue with amdgpu graphics card and i915kms graphics card.
 
 Do this as root user:--  "cd /usr/ports/graphics/drm-61-kmod" and "make install" worked perfectly for me..
+
+# Shutdown not working try this...
+hw.efi.poweroff=0 ## in /etc/sysctl.conf
+
