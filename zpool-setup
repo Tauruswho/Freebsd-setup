@@ -59,3 +59,6 @@ sudo efibootmgr	-B -b 0009 ## delete entry
 ## Copy whole disk to new disk
 sudo dd if=/dev/ada0 of=/dev/ada1 bs=1m status=progress
 
+sudo cp /boot/loader.efi /boot/efi/efi/boot/bootx64.efi ## copy boot code to efi partition
+
+
