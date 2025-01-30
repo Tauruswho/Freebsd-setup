@@ -5,7 +5,7 @@ I use "desktop-installer" for setting up desktops for first install.
 
 Lost virtual consoles after upgrade to 14.2..
 
-Had same issue with amdgpu graphics card and i915kms graphics card no virtual consol.
+Had same issue with amdgpu graphics card and i915kms graphics card no virtual consoles.
 
 Do this as root user:--  "cd /usr/ports/graphics/drm-61-kmod" and "make install" worked perfectly for me..
 
