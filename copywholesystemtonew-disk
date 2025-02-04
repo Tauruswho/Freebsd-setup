@@ -30,6 +30,7 @@ zpool create  -o ashift=12 -o autotrim=on -O acltype=posixacl -O compression=lz4
 zpool export freebsd-1
 ## Then re import freebsd-1 with mountpoint /mnt
 zpool import -R /mnt freebsd-1
+## check using zfs list for correct mountpoint
 
 ## Create all need datasets and file systems and directories needed.
 zfs create -o mountpoint=none freebsd/ROOT
