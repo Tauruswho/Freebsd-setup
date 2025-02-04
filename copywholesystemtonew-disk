@@ -57,6 +57,9 @@ rsync -av --exclude "/mnt" / /mnt/
 /dev/gpt/efiboot-1  /boot/efi msdosfs rw 2 2
 ## remove /mnt/boot/zfs/zpool.cache so that system does not look for old zpools
 rm  /mnt/boot/zfs/*
+## Set bootfilesystem so that it boots.
+zpool set bootfs=freebsd-1/ROOT/default freebsd-1
+zpool get bootfs
 ## check fstab,cr.conf,loader.conf,sanoid.conf,hostname,hosts,sysctl.conf and make suitable for new system or computer!!!!
 ## When in new system you can add boot options to the BIOS.
 efibootmgr	  -a   -c   -l	 /boot/efi/efi/freebsd/loader.efi   -L FreeBSD-14.2
