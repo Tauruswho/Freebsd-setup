@@ -28,7 +28,7 @@ zpool create  -o ashift=12 -o autotrim=on -O acltype=posixacl -O compression=lz4
 ## If using raid add extra disk partitions and mirror or raidz or whatever.
 ## Then export the new zpool 
 zpool export freebsd-1
-## Then re import freebsd-1 with mountpoit /mnt
+## Then re import freebsd-1 with mountpoint /mnt
 zpool import -R /mnt freebsd-1
 
 ## Create all need datasets and file systems and directories needed.
