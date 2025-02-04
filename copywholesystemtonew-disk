@@ -64,6 +64,6 @@ zpool get bootfs
 ## reboot system to new disk to test it out.
 ## When in new system you can add boot options to the BIOS.
 efibootmgr	  -a   -c   -l	 /boot/efi/efi/freebsd/loader.efi   -L FreeBSD-14.2
-## can redo boot loader.
+## you can redo boot loader if needed.
 cp /boot/loader.efi /boot/efi/efi/boot/bootx64.efi
 ## Hope thats all
