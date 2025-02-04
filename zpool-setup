@@ -16,6 +16,7 @@ sudo zfs set recordsize=1M tank4/home
 
 sudo zpool status
 sudo zpool list
+sudo zfs list
 
 ## rsync after inital pool setup or try zfs send recieve or syncoid below..
 sudo rsync -av /home/ /mnt/home/
