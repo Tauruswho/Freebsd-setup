@@ -1,5 +1,7 @@
 ## "All the right commands, not necessarily in the right order" ##
 
+## See copywholesystemtonew-disk if you need to clone a good installed system...
+
 # zpool create example
 
 sudo zpool create  -o ashift=12 -o autotrim=on -O acltype=posixacl -O compression=lz4  -O dnodesize=auto -O relatime=on -O atime=off -O xattr=sa tank4  /dev/nda2p2
