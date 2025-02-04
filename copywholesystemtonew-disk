@@ -12,7 +12,7 @@ gpart destroy -F /dev/nda1
 gpart create -s gpt /dev/nda1
 gpart add -t efi -s 260M /dev/nda1
 gpart add -t freebsd-zfs -s 928G /dev/nda1  ## adjust as needed
-gpart add -t freebsd-swap -s 2048M /dev/nda1  ## adjust as needed or none large ram
+gpart add -t freebsd-swap -s 2048M /dev/nda1  ## adjust as needed or none for large ram
 
 gpart modify -l efiboot-1 -i1 /dev/nda1 ## add a disk label
 gpart modify -l zfsblue-1 -i2 /dev/nda1 ## add disk label
