@@ -61,6 +61,7 @@ rm  /mnt/boot/zfs/*
 zpool set bootfs=freebsd-1/ROOT/default freebsd-1
 zpool get bootfs
 ## check fstab,rc.conf,loader.conf,sanoid.conf,hostname,hosts,sysctl.conf and make suitable for new system or computer!!!!
+## reboot system to new disk to test it out.
 ## When in new system you can add boot options to the BIOS.
 efibootmgr	  -a   -c   -l	 /boot/efi/efi/freebsd/loader.efi   -L FreeBSD-14.2
 ## can redo boot loader.
