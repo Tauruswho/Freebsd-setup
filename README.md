@@ -17,3 +17,4 @@ https://askubuntu.com/questions/1338578/mac-address-stuck-at-888888888788   usin
 
 Modify your bios for nvme boot:----  https://winraid.level1techs.com/t/howto-get-full-nvme-support-for-all-systems-with-an-ami-uefi-bios/30901
 
+See copywholesystemtonew-disk if you need to clone a good installed system...
