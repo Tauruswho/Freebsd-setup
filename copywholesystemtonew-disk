@@ -8,7 +8,7 @@
 ## First install new hard disk or nvme in comuter.
 ## Partition disk, and identify the target disk.
 gpart show or gpart show -l
-gpart destroy -F /dev/nda1
+gpart destroy -F /dev/nda1  ## set to your target disk
 gpart create -s gpt /dev/nda1
 gpart add -t efi -s 260M /dev/nda1
 gpart add -t freebsd-zfs -s 928G /dev/nda1  ## adjust as needed
