@@ -26,7 +26,7 @@ sudo mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi ## add to fstab "/dev/gpt/e
 sudo cp -av /boot/efi /mnt/boot/efi
 sudo zpool set bootfs=tank6/ROOT/default tank6
 sudo zpool set cachefile=/boot/zfs/zpool.cache tank4
-sudo ln -s /boot/zfs /etc/zfs  ## this links zpool cache so that zdb works...
+sudo ln -s /boot/zfs/zpool.cache /etc/zfs/zpool.cache  ## this links zpool cache so that zdb works...
 sudo rm /mnt/boot/zfs/*  ## if creating new bootable pool from another pool..
 
 ####  edit /etc/fstab to suit efiboot and check everthing ###
