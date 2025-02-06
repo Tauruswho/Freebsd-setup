@@ -66,4 +66,6 @@ zpool get bootfs
 efibootmgr	  -a   -c   -l	 /boot/efi/efi/freebsd/loader.efi   -L FreeBSD-14.2
 ## you can redo boot loader if needed.
 cp /boot/loader.efi /boot/efi/efi/boot/bootx64.efi
+zpool set cachefile=/boot/zfs/zpool.cache freebsd-1
+ln -s /boot/zfs/zpool.cache /etc/zfs/zpool.cache  ## This makes zdb work
 ## Hope thats all
