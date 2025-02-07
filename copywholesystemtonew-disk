@@ -5,7 +5,7 @@
 ## Existing zpool is called freebsd
 ## New zpool is going to be called freebsd-1
 ## All commands as root user or you add sudo or doas to all commands.
-## First install new hard disk or nvme in comuter.
+## First install new hard disk or nvme in computer.
 ## Partition disk, and identify the target disk.
 gpart show or gpart show -l
 gpart destroy -F /dev/nda1  ## set to your target disk
