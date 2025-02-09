@@ -1,0 +1,101 @@
+conky.config = {
+	use_xft = true,
+	font = 'DejaVuSerif:size=8',
+	xftalpha = 0.8,
+	update_interval = 1.0,
+	total_run_times = 0,
+	own_window = true,
+	own_window_transparent = true,
+	own_window_argb_visual = true,
+	own_window_type = 'normal',
+	own_window_class = 'conky-semi',
+	own_window_argb_value = 255,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	background = false,
+	double_buffer = true,
+	minimum_width = 300, minimum_height = 200,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = true,
+	default_shade_color = 'black',
+	default_outline_color = 'white',
+	default_bar_width = 150, default_bar_height = 7,
+	default_gauge_width = 20, default_gauge_height = 20,
+	imlib_cache_size = 0,
+	draw_shades = false,
+	xinerama_head = 1,
+	alignment = 'top_right',
+	gap_x = 5,
+	gap_y = 35,
+	no_buffers = true,
+	uppercase = false,
+	cpu_avg_samples = 2,
+	override_utf8_locale = true,
+	default_color = '#ECEAE4',
+	color1 = '#9f907d',
+	color2 = '#01C400',
+};
+conky.text = [=[
+Conky Version:$alignr V.${conky_version}
+${color #00ff00}SYSTEM ${hr 2}$color
+Operating System:$alignr${sysname} - $machine
+# CPU:$alignr${exec cat /proc/cpuinfo | grep "model name" -m1 | cut -d":" -f2 | cut -d" " -f2- | sed 's#Processor ##'}
+CPU:-$alignr ${exec sysctl hw.model | grep "hw.model" | awk '{print $2 $4}' }
+# System:$alignr${sysname} $machine
+Kernel: $alignr${kernel} - ${machine}
+Core Freq:- ${alignr}${freq_g (1)} GHz
+Hostname: $alignr$nodename
+# All users: $alignr${user_number} Users
+User: $alignr${exec whoami}
+Up Time: $alignr${uptime}
+Time: $alignr${time}${color}
+${color #00ff00}CPU Performance
+${color red}1 ${color}${cpubar cpu1} ${alignr}${color red}2 ${color}${cpubar cpu2}
+${color red}3 ${color}${cpubar cpu3} ${alignr}${color red}4 ${color}${cpubar cpu4}
+${color red}5 ${color}${cpubar cpu5} ${alignr}${color red}6 ${color}${cpubar cpu6}
+${color red}7 ${color}${cpubar cpu7} ${alignr}${color red}8 ${color}${cpubar cpu8}
+${color #00ff00}CPU Temperature${color}${alignr}${color white}${execi 5 sysctl -n dev.cpu.0.temperature}
+${color #00ff00}CPU Usage $alignr PID     CPU%   MEM
+${color}${top name 1} $alignr ${top pid 1} ${top cpu 1} - ${top mem_res 1}
+${top name 2} $alignr ${top pid 2} ${top cpu 2} - ${top mem_res 2}
+${top name 3} $alignr ${top pid 3} ${top cpu 3} - ${top mem_res 3}
+${top name 4} $alignr ${top pid 4} ${top cpu 4} - ${top mem_res 4}
+${color #00ff00}Mem usage $alignr PID MEM%
+${color}${top_mem name 1} $alignr ${top_mem pid 1} ${top_mem mem 1}
+${top_mem name 2} $alignr ${top_mem pid 2} ${top_mem mem 2}
+${top_mem name 3} $alignr ${top_mem pid 3} ${top_mem mem 3}
+${top_mem name 4} $alignr ${top_mem pid 4} ${top_mem mem 4}
+${color red}RAM:-             ${alignr}${color orange}$mem/$memmax ${membar}${color}
+${color red}SWAP:-            ${alignr}${color orange}$swap/$swapmax ${swapbar}${color}
+${color #00ff00}Partitions${color}
+/:- $alignr ${fs_type /} ${fs_used /}/${fs_free /}${color green}${fs_bar /}${color}
+/home:- $alignr ${fs_type /home/mark} ${fs_used /home/mark}/${fs_free /home/mark}${color green}${fs_bar /home/mark}${color}
+${color #00ff00}Total disk space used:-${color} $alignr${exec zpool list | grep "freebsd" | awk '{print $3}' }
+${color #00ff00}Total disk space:-${color} $alignr${exec zpool list | grep "freebsd" | awk '{print $2}' }
+# /Backup-1: $alignr ${fs_type /Backup-1} ${fs_used /Backup-1}/${fs_free /Backup-1}${color green}${fs_bar /Backup-1}${color}
+# /Backup-2: $alignr ${fs_type /Backup-2} ${fs_used /Backup-2}/${fs_free /Backup-2}${color green}${fs_bar /Backup-2}${color}
+${color red}Disk Read ${diskio_read}${alignr} Disk Write ${diskio_write}${color}
+${diskiograph_read /dev/nda0 20,150 F57900 FCAF3E} nv0${alignr}${diskiograph_write /dev/nda0 20,150 F57900 FCAF3E}
+${diskiograph_read /dev/nda1 20,150 F57900 FCAF3E} nv1${alignr}${diskiograph_write /dev/nda1 20,150 F57900 FCAF3E}
+${diskiograph_read /dev/nda2 20,150 F57900 FCAF3E} nv2${alignr}${diskiograph_write /dev/nda2 20,150 F57900 FCAF3E}
+${diskiograph_read /dev/nda3 20,150 F57900 FCAF3E} nv3${alignr}${diskiograph_write /dev/nda3 20,150 F57900 FCAF3E}
+${diskiograph_read /dev/ada0 20,150 F57900 FCAF3E} ada0${alignr}${diskiograph_write /dev/ada0 20,150 F57900 FCAF3E}
+${diskiograph_read /dev/ada1 20,150 F57900 FCAF3E} ada1${alignr}${diskiograph_write /dev/ada1 20,150 F57900 FCAF3E}
+${diskiograph_read /dev/da0 20,150 F57900 FCAF3E} da0${alignr}${diskiograph_write /dev/da0 20,150 F57900 FCAF3E}
+${diskiograph_read /dev/da1 20,150 F57900 FCAF3E} da1${alignr}${diskiograph_write /dev/da1 20,150 F57900 FCAF3E}
+${color #00ff00}Network
+${color}IP on LAN:- $alignr ${addr em0}
+${color}Download Speed:-$alignr${downspeed em0}/Total:-${totaldown em0}
+Upload Speed:-$alignr${upspeed em0}/Total:-${totalup em0}
+${color}IP on Wireless:- $alignr ${addr wlan0}
+${color}Download Speed:-$alignr${downspeed wlan0}/Total:-${totaldown wlan0}
+Upload Speed:-$alignr${upspeed wlan0}/Total:-${totalup wlan0}
+Name Server 1:- $alignr ${nameserver}
+Name Server 2:- $alignr ${nameserver 1}
+GateWay:- $alignr ${exec netstat -rn | grep "default" | awk '{print $2}' }
+IP (Public):$alignr${execi 600 wget http://checkip.dyndns.org/ -q -O - | grep -Eo '\<[[:digit:]]{1,3}(\.[[:digit:]]{1,3}){3}\>'}
+${color red}Uploads:${alignr}Downloads:${color}
+${upspeedgraph em0 20,150 F57900 FCAF3E}${alignr}${downspeedgraph em0 20,150 F57900 FCAF3E}
+${upspeedgraph wlan0 20,150 F57900 FCAF3E}${alignr}${downspeedgraph wlan0 20,150 F57900 FCAF3E}
+]=];
