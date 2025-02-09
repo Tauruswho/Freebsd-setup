@@ -1,8 +1,8 @@
-# ID disks
+## ID disks
 
 geom disk list
 
-# Use gpart
+## Use gpart
 
 gpart show
 gpart show -l
