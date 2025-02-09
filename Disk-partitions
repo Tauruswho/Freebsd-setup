@@ -7,6 +7,9 @@ geom disk list
 gpart show
 gpart show -l
 
+## If you want to make sure the disk is perfectly clean if disk has previously been used
+dd if=/dev/zero of=/dev/ada0 bs=1M status=progress
+
 gpart destroy -F /dev/ada0
 gpart create -s gpt /dev/ada0
 gpart add -t efi -s 260M /dev/ada0  
