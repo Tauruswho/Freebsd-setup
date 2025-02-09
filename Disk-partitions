@@ -1,6 +1,6 @@
 # ID disks
 
- geom disk list
+geom disk list
 
 # Use gpart
 
