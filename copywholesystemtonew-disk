@@ -53,10 +53,10 @@ mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi
 ## check file system pointpoints with "df -Th" and "zfs list"
 ## Copy whole system to new zpool freebsd-1
 rsync -av --exclude "/mnt" / /mnt/
-## Change /mnt/etc/fstab to suit new mountpoints and change swap if used.
+## Edit /mnt/etc/fstab to suit new mountpoints and change swap if used.
 /dev/gpt/efiboot-1  /boot/efi msdosfs rw 2 2
 ## remove /mnt/boot/zfs/zpool.cache so that system does not look for old zpools
-rm  /mnt/boot/zfs/*
+rm  /mnt/boot/zfs/zpool.cache
 ## Set bootfilesystem so that it boots.
 zpool set bootfs=freebsd-1/ROOT/default freebsd-1
 zpool get bootfs
