@@ -24,21 +24,21 @@ sudo newfs_msdos -F 32 -c 1 -L "efiboot-1" /dev/nda1p1  ## Format the efi boot p
 
 ## If using zfs raid do above for every disk in new zpool, but with different labels for each disk. eg efiboot-2, zfsblue-2..
 
-## Create the zpool freebsd-1
+## Create the new zpool freebsd-1
 zpool create  -o ashift=12 -o autotrim=on -O acltype=posixacl -O compression=lz4  -O dnodesize=auto -O relatime=on -O atime=off -O xattr=sa freebsd-1  /dev/gpt/zfsblue-1
 
-## If using raid add extra disk partitions and mirror or raidz or whatever for your setup.
+## If using raid add extra disk partitions and mirror or raidz or whatever for your setup. "freebsd-1 mirror /dev/gpt/zfsblue-1 /dev/gpt/zfsblue-2"
 ## Then export the new zpool 
 zpool export freebsd-1
 ## Then re-import freebsd-1 with mountpoint /mnt
 zpool import -R /mnt freebsd-1
 ## Check using zfs list for correct mountpoint
 
-## >> At this point you could use zfs send | recieve and rsync only the /boot/efi files, this will also copy all snapshots, rsync does not copy snapshots. <<
+## >> At this point you could use zfs send | recieve and rsync or copy only the /boot/efi files, this will also copy all snapshots, rsync does not copy snapshots. <<
 
 ## >> If doing the zfs send | recieve method <<
->> zfs snapshot -r freebsd@20250214 <<
->> zfs send -Rv freebsd@20250214  | zfs recv -Fuv freebsd-1 <<
+>> zfs snapshot -r freebsd@transfer <<
+>> zfs send -Rv freebsd@transfer  | zfs recv -Fuv freebsd-1 <<
 >> mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi <<
 >> rsync -av /boot/efi/ /mnt/boot/efi/ <<
 ## >> go to Edit /mnt/etc/fstab further down <<
