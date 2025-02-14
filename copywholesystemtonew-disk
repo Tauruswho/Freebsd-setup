@@ -33,6 +33,7 @@ zpool import -R /mnt freebsd-1
 ## Check using zfs list for correct mountpoint
 
 ## >> At this point you could use zfs send | recieve and rsync only the /boot/efi files, this will also copy all snapshots, rsync does not copy snapshots. <<
+
 ## >> If doing the zfs send | recieve method <<
 >> zfs snapshot -r freebsd@20250214 <<
 >> zfs send -Rv freebsd@20250214  | zfs recv -Fuv freebsd-1 <<
@@ -40,7 +41,7 @@ zpool import -R /mnt freebsd-1
 >> rsync -av /boot/efi/ /mnt/boot/efi/ <<
 ## >> go to Edit /mnt/etc/fstab further down <<
 
-## Create all need datasets and file systems and directories needed.
+## If using the rsync method. Create all needed datasets and file systems and directories needed.
 zfs create -o mountpoint=none freebsd-1/ROOT
 zfs create -o mountpoint=/ freebsd-1/ROOT/default
 zfs create -o mountpoint=/usr freebsd-1/usr
@@ -61,6 +62,7 @@ mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi
 ## Check file system pointpoints with "df -Th" and "zfs list"
 ## Copy whole system to new zpool freebsd-1
 rsync -av --exclude "/mnt" / /mnt/
+
 ## Edit /mnt/etc/fstab to suit new mountpoints and change swap if used.
 ## >> "/dev/gpt/efiboot-1  /boot/efi msdosfs rw 2 2" <<
 ## Remove /mnt/boot/zfs/zpool.cache so that system does not look for old zpools
