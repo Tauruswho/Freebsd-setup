@@ -1,4 +1,6 @@
-﻿## Need to make a new bootable Freebsd install from an existing install on zfs using either "rsync" or "zfs send | recieve":-
+##### UEFI only #####
+
+## Need to make a new bootable Freebsd install from an existing install on zfs using either "rsync" or "zfs send | recieve":-
 ## So making an exact copy of whole working system to new hard disk that is bootable on existing computer or another with a few changes to some files…… 
 ## Check fstab,rc.conf,loader.conf,sanoid.conf,hostname,hosts,sysctl.conf and make suitable for new system or computer after rsync is done!!!!
 
