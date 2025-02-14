@@ -16,10 +16,6 @@ gpart add -t efi -s 260M /dev/nda1
 gpart add -t freebsd-swap -s 2048M /dev/nda1  ## adjust size as needed (dumpdev always some)!
 gpart add -t freebsd-zfs -s 928G /dev/nda1  ## adjust size as needed
 
-## Add more swap via a swap file later on after completion of this if more swap is needed
-zfs create -V 16G freebsd-1/swap 
-swapon /dev/zvol/freebsd-1/swap
-
 gpart show
 
 gpart modify -l efiboot-1 -i1 /dev/nda1 ## add a disk label, whatever label you want to give it
@@ -82,10 +78,18 @@ zpool set bootfs=freebsd-1/ROOT/default freebsd-1
 zpool get bootfs
 ## Check fstab,rc.conf,loader.conf,sanoid.conf,hostname,hosts,sysctl.conf and make suitable for new system or computer!!!!
 ## Reboot system to new disk to test it out.
+
 ## When in new system you can add boot options to the BIOS.
 efibootmgr	  -a   -c   -l	 /boot/efi/efi/freebsd/loader.efi   -L FreeBSD-14.2
 ## You can redo boot loader if needed.
 cp /boot/loader.efi /boot/efi/efi/boot/bootx64.efi
 zpool set cachefile=/boot/zfs/zpool.cache freebsd-1
 ln -s /boot/zfs/zpool.cache /etc/zfs/zpool.cache  ## This makes zdb work
+
+## Add more swap via a swap file later on after completion of this if more swap is needed
+zfs create -V 16G freebsd-1/swap 
+swapon /dev/zvol/freebsd-1/swap
+## Add to /etc/fstab
+"/dev/zvol/freebsd-1/swap  none	swap	sw		0	0" 
+
 ## Hope thats all
