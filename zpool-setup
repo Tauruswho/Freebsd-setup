@@ -65,4 +65,6 @@ sudo dd if=/dev/ada0 of=/dev/ada1 bs=1m status=progress
 
 sudo cp /boot/loader.efi /boot/efi/efi/boot/bootx64.efi ## copy boot code to efi partition
 
-
+## Add more swap via a swap file
+zfs create -V 16G freebsd-1/swap 
+swapon /dev/zvol/freebsd-1/swap
