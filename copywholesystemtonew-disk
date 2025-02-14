@@ -16,6 +16,10 @@ gpart add -t efi -s 260M /dev/nda1
 gpart add -t freebsd-swap -s 2048M /dev/nda1  ## adjust size as needed (dumpdev always some)!
 gpart add -t freebsd-zfs -s 928G /dev/nda1  ## adjust size as needed
 
+## Add more swap via a swap file later on after completion of this if more swap is needed
+zfs create -V 16G freebsd-1/swap 
+swapon /dev/zvol/freebsd-1/swap
+
 gpart show
 
 gpart modify -l efiboot-1 -i1 /dev/nda1 ## add a disk label, whatever label you want to give it
