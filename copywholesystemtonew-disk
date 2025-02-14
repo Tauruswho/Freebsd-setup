@@ -13,12 +13,16 @@ gpart show or gpart show -l
 gpart destroy -F /dev/nda1  ## set to your target disk could be /dev/ada0 /dev/nda0 /dev/da0, double check, double check...
 gpart create -s gpt /dev/nda1
 gpart add -t efi -s 260M /dev/nda1
+gpart add -t freebsd-swap -s 2048M /dev/nda1  ## adjust size as needed (dumpdev always some)!
 gpart add -t freebsd-zfs -s 928G /dev/nda1  ## adjust size as needed
-gpart add -t freebsd-swap -s 2048M /dev/nda1  ## adjust size as needed or none for large ram
+
+gpart show
 
 gpart modify -l efiboot-1 -i1 /dev/nda1 ## add a disk label, whatever label you want to give it
-gpart modify -l zfsblue-1 -i2 /dev/nda1 ## add a disk label, whatever label you want to give it
-gpart modify -l swap-blue -i3 /dev/nda1 ## add a disk label, whatever label you want to give it
+gpart modify -l swap-blue -i2 /dev/nda1 ## add a disk label, whatever label you want to give it
+gpart modify -l zfsblue-1 -i3 /dev/nda1 ## add a disk label, whatever label you want to give it
+
+gpart show -l
 
 newfs_msdos -F 32 -c 1 -L "efiboot-1" /dev/nda1p1  ## Format the efi boot partition with label
 
