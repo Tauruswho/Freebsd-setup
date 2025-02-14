@@ -20,7 +20,7 @@ gpart modify -l efiboot-1 -i1 /dev/nda1 ## add a disk label, whatever label you 
 gpart modify -l zfsblue-1 -i2 /dev/nda1 ## add a disk label, whatever label you want to give it
 gpart modify -l swap-blue -i3 /dev/nda1 ## add a disk label, whatever label you want to give it
 
-sudo newfs_msdos -F 32 -c 1 -L "efiboot-1" /dev/nda1p1  ## Format the efi boot partition with label
+newfs_msdos -F 32 -c 1 -L "efiboot-1" /dev/nda1p1  ## Format the efi boot partition with label
 
 ## If using zfs raid do above for every disk in new zpool, but with different labels for each disk. eg efiboot-2, zfsblue-2..
 
