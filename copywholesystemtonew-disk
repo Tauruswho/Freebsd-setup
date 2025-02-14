@@ -32,22 +32,28 @@ zpool export freebsd-1
 zpool import -R /mnt freebsd-1
 ## Check using zfs list for correct mountpoint
 
-## >> At this point you could use zfs send | recieve and rsync only the /boot/efi files, this will also copy all snapshots, rsync does not copy snapshots. << ##
+## >> At this point you could use zfs send | recieve and rsync only the /boot/efi files, this will also copy all snapshots, rsync does not copy snapshots. <<
+## >> If doing the zfs send | recieve method <<
+>> zfs snapshot -r freebsd@20250214 <<
+>> zfs send -Rv freebsd@20250214  | zfs recv -Fuv freebsd-1 <<
+>> mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi <<
+>> rsync -av /boot/efi/ /mnt/boot/efi/ <<
+## >> go to Edit /mnt/etc/fstab further down <<
 
 ## Create all need datasets and file systems and directories needed.
-zfs create -o mountpoint=none freebsd/ROOT
-zfs create -o mountpoint=/ freebsd/ROOT/default
-zfs create -o mountpoint=/usr freebsd/usr
-zfs create freebsd/usr/ports
-zfs create -o mountpoint=/tmp freebsd/tmp
-zfs create -o mountpoint=/var freebsd/var
-zfs create freebsd/var/crash
-zfs create freebsd/var/log
-zfs create freebsd/var/mail
-zfs create freebsd/var/tmp
-zfs create -o mountpoint=/home freebsd/home
-zfs create freebsd/home/mark
-zfs create freebsd/home/mark/Music
+zfs create -o mountpoint=none freebsd-1/ROOT
+zfs create -o mountpoint=/ freebsd-1/ROOT/default
+zfs create -o mountpoint=/usr freebsd-1/usr
+zfs create freebsd-1/usr/ports
+zfs create -o mountpoint=/tmp freebsd-1/tmp
+zfs create -o mountpoint=/var freebsd-1/var
+zfs create freebsd-1/var/crash
+zfs create freebsd-1/var/log
+zfs create freebsd-1/var/mail
+zfs create freebsd-1/var/tmp
+zfs create -o mountpoint=/home freebsd-1/home
+zfs create freebsd-1/home/mark
+zfs create freebsd-1/home/mark/Music
 ## Carry on as needed for home users and datasets.
 mkdir -p /mnt/boot/efi
 ## Mount the /boot/efi partition and copy whole system…
