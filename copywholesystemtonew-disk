@@ -1,4 +1,4 @@
-﻿## Need to make a new bootable Freebsd install from an existing install on zfs:-
+﻿## Need to make a new bootable Freebsd install from an existing install on zfs using either "rsync" or "zfs send | recieve":-
 ## So making an exact copy of whole working system to new hard disk that is bootable on existing computer or another with a few changes to some files…… 
 ## Check fstab,rc.conf,loader.conf,sanoid.conf,hostname,hosts,sysctl.conf and make suitable for new system or computer after rsync is done!!!!
 
@@ -8,27 +8,27 @@
 ## First install new hard disk or nvme in computer.
 ## Partition disk, and identify the target disk.
 gpart show or gpart show -l
-gpart destroy -F /dev/nda1  ## set to your target disk
+gpart destroy -F /dev/nda1  ## set to your target disk could be /dev/ada0 /dev/nda0 /dev/da0, double check, double check...
 gpart create -s gpt /dev/nda1
 gpart add -t efi -s 260M /dev/nda1
-gpart add -t freebsd-zfs -s 928G /dev/nda1  ## adjust as needed
-gpart add -t freebsd-swap -s 2048M /dev/nda1  ## adjust as needed or none for large ram
+gpart add -t freebsd-zfs -s 928G /dev/nda1  ## adjust size as needed
+gpart add -t freebsd-swap -s 2048M /dev/nda1  ## adjust size as needed or none for large ram
 
-gpart modify -l efiboot-1 -i1 /dev/nda1 ## add a disk label
-gpart modify -l zfsblue-1 -i2 /dev/nda1 ## add a disk label
-gpart modify -l swap-blue -i3 /dev/nda1 ## add a disk label
+gpart modify -l efiboot-1 -i1 /dev/nda1 ## add a disk label, whatever label you want to give it
+gpart modify -l zfsblue-1 -i2 /dev/nda1 ## add a disk label, whatever label you want to give it
+gpart modify -l swap-blue -i3 /dev/nda1 ## add a disk label, whatever label you want to give it
 
 sudo newfs_msdos -F 32 -c 1 -L "efiboot-1" /dev/nda1p1  ## Format the efi boot partition with label
 
-## If using zfs raid do above for every disk in new zpool, but with different labels for each disk.
+## If using zfs raid do above for every disk in new zpool, but with different labels for each disk. eg efiboot-2, zfsblue-2..
 
 ## Create the zpool freebsd-1
 zpool create  -o ashift=12 -o autotrim=on -O acltype=posixacl -O compression=lz4  -O dnodesize=auto -O relatime=on -O atime=off -O xattr=sa freebsd-1  /dev/gpt/zfsblue-1
 
-## If using raid add extra disk partitions and mirror or raidz or whatever.
+## If using raid add extra disk partitions and mirror or raidz or whatever for your setup.
 ## Then export the new zpool 
 zpool export freebsd-1
-## Then re import freebsd-1 with mountpoint /mnt
+## Then re-import freebsd-1 with mountpoint /mnt
 zpool import -R /mnt freebsd-1
 ## Check using zfs list for correct mountpoint
 
