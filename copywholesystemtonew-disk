@@ -1,6 +1,6 @@
 ﻿## Need to make a new bootable Freebsd install from an existing install on zfs:-
 ## So making an exact copy of whole working system to new hard disk that is bootable on existing computer or another with a few changes to some files…… 
-## check fstab,rc.conf,loader.conf,sanoid.conf,hostname,hosts,sysctl.conf and make suitable for new system or computer after rsync is done!!!!
+## Check fstab,rc.conf,loader.conf,sanoid.conf,hostname,hosts,sysctl.conf and make suitable for new system or computer after rsync is done!!!!
 
 ## Existing zpool is called freebsd
 ## New zpool is going to be called freebsd-1
@@ -30,8 +30,10 @@ zpool create  -o ashift=12 -o autotrim=on -O acltype=posixacl -O compression=lz4
 zpool export freebsd-1
 ## Then re import freebsd-1 with mountpoint /mnt
 zpool import -R /mnt freebsd-1
-## check using zfs list for correct mountpoint
-## >> At this point you could use zfs send | recieve and rsync only the /boot/efi files << ##
+## Check using zfs list for correct mountpoint
+
+## >> At this point you could use zfs send | recieve and rsync only the /boot/efi files, this will also copy all snapshots, rsync does not copy snapshots. << ##
+
 ## Create all need datasets and file systems and directories needed.
 zfs create -o mountpoint=none freebsd/ROOT
 zfs create -o mountpoint=/ freebsd/ROOT/default
@@ -50,21 +52,21 @@ zfs create freebsd/home/mark/Music
 mkdir -p /mnt/boot/efi
 ## Mount the /boot/efi partition and copy whole system…
 mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi
-## check file system pointpoints with "df -Th" and "zfs list"
+## Check file system pointpoints with "df -Th" and "zfs list"
 ## Copy whole system to new zpool freebsd-1
 rsync -av --exclude "/mnt" / /mnt/
 ## Edit /mnt/etc/fstab to suit new mountpoints and change swap if used.
 ## >> "/dev/gpt/efiboot-1  /boot/efi msdosfs rw 2 2" <<
-## remove /mnt/boot/zfs/zpool.cache so that system does not look for old zpools
+## Remove /mnt/boot/zfs/zpool.cache so that system does not look for old zpools
 rm  /mnt/boot/zfs/zpool.cache
 ## Set bootfilesystem so that it boots.
 zpool set bootfs=freebsd-1/ROOT/default freebsd-1
 zpool get bootfs
-## check fstab,rc.conf,loader.conf,sanoid.conf,hostname,hosts,sysctl.conf and make suitable for new system or computer!!!!
-## reboot system to new disk to test it out.
+## Check fstab,rc.conf,loader.conf,sanoid.conf,hostname,hosts,sysctl.conf and make suitable for new system or computer!!!!
+## Reboot system to new disk to test it out.
 ## When in new system you can add boot options to the BIOS.
 efibootmgr	  -a   -c   -l	 /boot/efi/efi/freebsd/loader.efi   -L FreeBSD-14.2
-## you can redo boot loader if needed.
+## You can redo boot loader if needed.
 cp /boot/loader.efi /boot/efi/efi/boot/bootx64.efi
 zpool set cachefile=/boot/zfs/zpool.cache freebsd-1
 ln -s /boot/zfs/zpool.cache /etc/zfs/zpool.cache  ## This makes zdb work
