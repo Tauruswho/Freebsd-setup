@@ -54,6 +54,7 @@ sudo mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi ## Add to fstab "/dev/gpt/e
 sudo rsync -av --exclude "/mnt" / /mnt/
 
 sudo zfs list -H -o name -t snapshot | sudo xargs -n1 zfs destroy  ## destroy all snapshots
+sudo zfs list -H -o name -t snapshot | grep transfer | xargs -n1 zfs destroy ## destroy a snapshot used for backup or clone
 
 sudo efibootmgr	  -a   -c   -l	 /boot/efi/efi/freebsd/loader.efi   -L FreeBSD-14.2
 sudo efibootmgr -v ## list boot entries
