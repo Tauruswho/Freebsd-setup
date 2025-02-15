@@ -43,7 +43,7 @@ zpool import -R /mnt freebsd-1
 ## >> If doing the zfs send | recieve method <<
 >> zfs snapshot -r freebsd@transfer <<
 >> zfs send -Rv freebsd@transfer  | zfs recv -Fuv freebsd-1 <<
-## Had to "zpool export freebsd-1" then "zpool import -R /mnt freebsd-1" to get mountpoints!!
+## Had to "zpool export freebsd-1" then "zpool import -R /mnt freebsd-1" to get mountpoints before I could carry on!!
 >> mount -t msdos /dev/gpt/efiboot-1 /mnt/boot/efi <<
 >> rsync -av /boot/efi/ /mnt/boot/efi/ <<
 ## >> go to Edit /mnt/etc/fstab further down <<
