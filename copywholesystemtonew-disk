@@ -38,7 +38,7 @@ zpool export freebsd-1
 zpool import -R /mnt freebsd-1
 ## Check using zfs list for correct mountpoint
 
-## >> At this point you could use zfs send | recieve and rsync or copy only the /boot/efi files, this will also copy all snapshots, rsync does not copy snapshots. <<
+## >> At this point you could use zfs send | recieve and rsync to copy only the /boot/efi files.. <<
 
 ## >> If doing the zfs send | recieve method <<
 >> zfs snapshot -r freebsd@transfer <<
