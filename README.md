@@ -3,6 +3,7 @@ This is mostly a lot commands and examples that I can't remember so this page sa
 I had a few issue on the way, not all directly Freebsd related, see below:-
 
 I use "desktop-installer" for setting up desktops for first install. But many guides on line to follow:-
+
 https://www.server-world.info/en/note?os=FreeBSD_14&p=download
 
 Lost virtual consoles after upgrade to 14.2..
@@ -15,6 +16,7 @@ Shutdown not working try this...
 hw.efi.poweroff=0 ## in /etc/sysctl.conf
 
 My ASUS maxium V extreme motherboard had the wrong MAC address "88:88:88:88:87:88". Booted into usb stick with Linux Mint and followed this guide:-
+
 https://askubuntu.com/questions/1338578/mac-address-stuck-at-888888888788   using eeupdate64e for linux... It worked...
 
 Modify your bios for nvme boot:----  
