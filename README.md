@@ -1,7 +1,9 @@
 Some basics for Feebsd set up... work in progress.
 This is mostly a lot commands and examples that I can't remember so this page saves me an internet search.
+I had a few issue on the way, not all directly Freebsd related, see below:-
 
-I use "desktop-installer" for setting up desktops for first install. 
+I use "desktop-installer" for setting up desktops for first install. But many guides on line to follow:-
+https://www.server-world.info/en/note?os=FreeBSD_14&p=download
 
 Lost virtual consoles after upgrade to 14.2..
 
