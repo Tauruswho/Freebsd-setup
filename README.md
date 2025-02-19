@@ -17,4 +17,8 @@ https://askubuntu.com/questions/1338578/mac-address-stuck-at-888888888788   usin
 
 Modify your bios for nvme boot:----  https://winraid.level1techs.com/t/howto-get-full-nvme-support-for-all-systems-with-an-ami-uefi-bios/30901
 
+Had loads of problems with WD SN580 1TB and SN770 1TB NVME M.2 drives stopping or faulting causing degraded zpools. Needed to update firmware follow guide below:-
+Tried windows WD update (WD-Dashboard) utils but they did not work for me!!!!!
+https://community.frame.work/t/western-digital-drive-update-guide-without-windows-wd-dashboard/20616
+
 See copywholesystemtonew-disk if you need to clone a good installed system...
