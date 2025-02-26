@@ -47,3 +47,4 @@ sudo ntfs-3g /dev/da0s1 /mnt
 
   sudo mount.exfat-fuse /dev/da0s1 /mnt
   
+See:-  https://forums.freebsd.org/threads/mounting-ntfs-usb-results-in-ntfs-signature-is-missing.77946/
