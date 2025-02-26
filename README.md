@@ -35,13 +35,14 @@ If gpart reports a partition as NTFS :--
 
 =>       63  120127425  da0  MBR  (57G)
 
-         63       1985       - free -  (993K)
+63       1985       - free -  (993K)
          
-       2048  120059904    1  ntfs  (57G)
+2048  120059904    1  ntfs  (57G)
        
-  120061952      65536    2  efi  (32M)
+120061952      65536    2  efi  (32M)
 
 sudo ntfs-3g /dev/da0s1 /mnt
+
   And it fails to mount with errors, mount it as exfat instead, dont know why it reports as NTFS!!!!
 
   sudo mount.exfat-fuse /dev/da0s1 /mnt
