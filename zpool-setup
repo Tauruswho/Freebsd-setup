@@ -42,6 +42,8 @@ sudo syncoid -r pool1 pool2 ## need to try this one
 
 ## Destroy all zfs snapshots
 sudo zfs list -H -o name -t snapshot | sudo xargs -n1 zfs destroy 
+## Destroy some snapshots in a dataset
+sudo zfs list -H -o name -t snapshot freebsd/home/user/dataset | sudo xargs -n1 zfs destroy
 
 sudo zfs set com.sun:auto-snapshot=true tank4 ## maybe needed...
 
