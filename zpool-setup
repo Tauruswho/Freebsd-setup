@@ -4,7 +4,7 @@
 
 # zpool create example
 
-sudo zpool create  -o ashift=12 -o autotrim=on -O acltype=posixacl -O compression=lz4  -O dnodesize=auto -O relatime=on -O atime=off -O xattr=sa tank4  /dev/nda2p2
+sudo zpool create  -o ashift=12 -o autotrim=on -O acltype=posixacl -O compression=lz4  -O dnodesize=auto -O relatime=on -O atime=on -O xattr=sa tank4  /dev/nda2p2
 
 ## (/dev/gpt/label) if using labels , see gpart  ## Can always export then re-import with:-
 sudo zpool import -d /dev/gpt tank4
