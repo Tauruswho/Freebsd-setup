@@ -1,5 +1,5 @@
 # Device		Mountpoint	FStype	Options		Dump	Pass#
-/dev/gpt/efiboot0		/boot/efi	msdosfs	rw		2	2
+/dev/gpt/efiboot-0		/boot/efi	msdosfs	rw		2	2
 /dev/mirror/swap		none	swap	sw		0	0
 # Added by auto-admin from /usr/local/sbin/auto-add-fdesc-mount
 fdesc		/dev/fd			fdescfs	rw		0	0
