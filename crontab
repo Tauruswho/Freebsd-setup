@@ -21,3 +21,5 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
 # UTC time.  See adjkerntz(8) for details.
 1,31	0-5	*	*	*	root	adjkerntz -a
 
+# Sanoid timer, to take system snapshots..
+*/15 * * * * root /usr/local/bin/sanoid --cron
